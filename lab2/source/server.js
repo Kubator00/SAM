@@ -29,10 +29,10 @@ app.get('/', (req, res) => {
 		</audio><br/><br/>`
 
 	if (imgFile)
-		page += `
-			<img src=${imgFile} id="posterImage"/>`
+		page += `<img src=${imgFile} id="posterImage"/>`
 	
 	
+	page += `<button id="videoCancel">Anulowanie filmu</button>`;
 	if (!videoFile && !audioFile)
 		page += `Nie przekazano parametru`
 
