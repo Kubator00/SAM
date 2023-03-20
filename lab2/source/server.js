@@ -14,12 +14,14 @@ app.get('/', (req, res) => {
     <body>
     `
 
-	if (videoFile)
+	if (videoFile){
 		page += `
 			<video controls id="videoPlayer">
 		<source src="${videoFile}" type="video/mp4">
 		Twoja przeglądarka nie obsługuje odtwarzacza wideo.
 		</video><br/><br/>`
+		page += `<button id="videoCancel" onClick="cancelVideo()">Anulowanie filmu</button>`;
+	}
 
 	if (audioFile){
 		page += `
@@ -27,8 +29,6 @@ app.get('/', (req, res) => {
 		<source src="${audioFile}" type="audio/mp3">
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
 		</audio><br/><br/>`
-	
-		page += `<button id="videoCancel" onClick="cancelVideo()">Anulowanie filmu</button>`;
 	}
 
 	if (imgFile)
