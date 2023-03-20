@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 			<video controls id="videoPlayer">
 		<source src="${videoFile}" type="video/mp4">
 		Twoja przeglądarka nie obsługuje odtwarzacza wideo.
-		</video>`
+		</video><br/><br/>`
 
 	if (audioFile)
 		page += `
@@ -27,7 +27,9 @@ app.get('/', (req, res) => {
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
 		</audio>`
 
-
+	if (!videoFile && !audioFile)
+		page += `Nie przekazano parametru`
+		
 	page += `</body> </html>`
 	res.send(page);
 
