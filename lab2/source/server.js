@@ -5,6 +5,7 @@ const app = express()
 app.get('/', (req, res) => {
 	const videoFile = req.query.videoFile;
 	const audioFile = req.query.audioFile;
+	const imgFile = req.query.imgFile;
 	let page = `<!DOCTYPE HTML>
     <html>
     <head>
@@ -27,6 +28,7 @@ app.get('/', (req, res) => {
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
 		</audio><br/><br/>`
 
+	
 	if (!videoFile && !audioFile)
 		page += `Nie przekazano parametru`
 
