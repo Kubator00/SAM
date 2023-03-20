@@ -29,6 +29,7 @@ app.get('/', (req, res) => {
 		<source src="${audioFile}" type="audio/mp3">
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
 		</audio><br/><br/>`
+		page += `<button id="audioCancel" onClick="cancelAudio()">Anulowanie filmu</button>`;
 	}
 
 	if (imgFile)
@@ -45,7 +46,7 @@ app.get('/', (req, res) => {
 	`
 
 	page += `<script>
-		function audioVideo(){
+		function cancelAudio(){
 			const audioPlayer = document.getElementById("audioPlayer");
 			audioPlayer.setAttribute("src", "cancel.mp3");
 		}
