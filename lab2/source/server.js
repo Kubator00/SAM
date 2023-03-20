@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 		<source src="${videoFile}" type="video/mp4">
 		Twoja przeglądarka nie obsługuje odtwarzacza wideo.
 		</video><br/><br/>`
-		page += `<button id="videoCancel" onClick="cancelVideo()">Anulowanie filmu</button>`;
+		page += `<button id="videoCancel" onClick="cancelVideo()">Anulowanie filmu</button><br><br>`;
 	}
 
 	if (audioFile){
@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 		<source src="${audioFile}" type="audio/mp3">
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
 		</audio><br/><br/>`
-		page += `<button id="audioCancel" onClick="cancelAudio()">Anulowanie filmu</button>`;
+		page += `<button id="audioCancel" onClick="cancelAudio()">Anulowanie audio</button><br><br>`;
 	}
 
 	if (imgFile)
@@ -53,7 +53,7 @@ app.get('/', (req, res) => {
 	</script>
 	`
 	
-	if (!videoFile && !audioFile)
+	if (!videoFile && !audioFile && !imgFile)
 		page += `Nie przekazano parametru`
 
 	page += `</body> </html>`
