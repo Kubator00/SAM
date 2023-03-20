@@ -44,6 +44,13 @@ app.get('/', (req, res) => {
 	</script>
 	`
 
+	page += `<script>
+		function audioVideo(){
+			const audioPlayer = document.getElementById("audioPlayer");
+			audioPlayer.setAttribute("src", "cancel.mp3");
+		}
+	</script>
+	`
 	
 	if (!videoFile && !audioFile)
 		page += `Nie przekazano parametru`
