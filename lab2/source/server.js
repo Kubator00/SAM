@@ -36,7 +36,15 @@ app.get('/', (req, res) => {
 	
 
 
+	page += `<script>
+		function cancelVideo(){
+			const videoPlayer = document.getElementById("videoPlayer");
+			videoPlayer.setAttribute("src", "cancel.mp4");
+		}
+	</script>
+	`
 
+	
 	if (!videoFile && !audioFile)
 		page += `Nie przekazano parametru`
 
