@@ -25,11 +25,11 @@ app.get('/', (req, res) => {
     	<audio controls id="audioPlayer">
 		<source src="${audioFile}" type="audio/mp3">
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
-		</audio>`
+		</audio><br/><br/>`
 
 	if (!videoFile && !audioFile)
 		page += `Nie przekazano parametru`
-		
+
 	page += `</body> </html>`
 	res.send(page);
 
