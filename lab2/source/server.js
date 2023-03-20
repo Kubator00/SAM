@@ -21,18 +21,22 @@ app.get('/', (req, res) => {
 		Twoja przeglądarka nie obsługuje odtwarzacza wideo.
 		</video><br/><br/>`
 
-	if (audioFile)
+	if (audioFile){
 		page += `
     	<audio controls id="audioPlayer">
 		<source src="${audioFile}" type="audio/mp3">
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
 		</audio><br/><br/>`
+	
+		page += `<button id="videoCancel" onClick="cancelVideo()">Anulowanie filmu</button>`;
+	}
 
 	if (imgFile)
 		page += `<img src=${imgFile} id="posterImage"/>`
 	
-	
-	page += `<button id="videoCancel">Anulowanie filmu</button>`;
+
+
+
 	if (!videoFile && !audioFile)
 		page += `Nie przekazano parametru`
 
