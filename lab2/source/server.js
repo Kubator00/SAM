@@ -28,6 +28,10 @@ app.get('/', (req, res) => {
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
 		</audio><br/><br/>`
 
+	if (imgFile)
+		page += `
+			<img src=${imgFile} id="posterImage"/>`
+	
 	
 	if (!videoFile && !audioFile)
 		page += `Nie przekazano parametru`
