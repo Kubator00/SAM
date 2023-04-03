@@ -44,6 +44,17 @@ const addImage = (imgFile) => {
     return result;
 }
 
+
+const addTable = (imgFile) => {
+    let result = `<table>`;
+    result += `<tr><th>No.</th><th>URL</th><th>Type</th></tr>`;
+
+
+    result += `</table>`
+    return result;
+}
+
+
 app.get('/', (req, res) => {
     const videoFile = req.query.videoFile;
     const audioFile = req.query.audioFile;
