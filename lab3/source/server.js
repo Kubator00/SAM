@@ -6,7 +6,7 @@ const addVideoPlayer = (videoFile) => {
     let result = '';
     result += `
 		<video controls id="videoPlayer">
-		<source src="${videoFile}" type="video/mp4">
+		<source src=${videoFile} type="video/mp4">
 		Twoja przeglądarka nie obsługuje odtwarzacza wideo.
 		</video><br/><br/>`
     result += `<button id="videoCancel" onClick="cancelVideo()">Anulowanie filmu</button>`;
@@ -26,7 +26,7 @@ const addAudioPlayer = (audioFile) => {
     let result = '';
     result += `
     	<audio controls id="audioPlayer">
-		<source src="${audioFile}" type="audio/mp3">
+		<source src=${audioFile} type="audio/mp3">
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
 		</audio><br/><br/>`
     result += `<button id="audioCancel" onClick="cancelAudio()">Anulowanie audio</button>`;
@@ -58,9 +58,9 @@ const addTable = (url, type) => {
     function addRow(type) {
         let src;
         if (type == 'Video')
-            src = document.getElementById('videoPlayer').getAttribute('src');
+            src = document.getElementById('videoPlayer').getElementsByTagName("source")[0].src;
         else if (type == 'Audio')
-            src = document.getElementById('audioPlayer').getAttribute('src');
+            src = document.getElementById('audioPlayer').getElementsByTagName("source")[0].src;
         else if (type == 'Image')
             src = document.getElementById('posterImage').getAttribute('src');
 
