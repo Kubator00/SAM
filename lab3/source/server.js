@@ -10,7 +10,7 @@ const addVideoPlayer = (videoFile) => {
 		Twoja przeglądarka nie obsługuje odtwarzacza wideo.
 		</video><br/><br/>`
     result += `<button id="videoCancel" onClick="cancelVideo()">Anulowanie filmu</button><br><br>`;
-    result += `<button id="videoAdd" onClick="">Add video</button><br><br>`;
+    result += `<button id="videoAdd" onClick="addRow('Video')">Add video</button><br><br>`;
     result += `
     <script>
     function cancelVideo(){
@@ -41,19 +41,33 @@ const addAudioPlayer = (audioFile) => {
     return result;
 }
 
+
 const addImage = (imgFile) => {
     let result = `<img src=${imgFile} id="posterImage"/>`;
     result += `<button id="imgAdd" onClick="">Add image</button><br><br>`;
     return result;
 }
 
-
-const addTable = () => {
+const addTable = (url,type) => {
     let result = `<table id='playlist_table'>`;
     result += `<tr><th>No.</th><th>URL</th><th>Type</th></tr>`;
-
-
     result += `</table>`
+    result += `
+    <script>
+        let rowNumber = 1;
+        function addRow(type){
+            let src;
+            if(type=='Video')
+                src=  document.getElementById('videoPlayer').scr;
+            
+            const table = document.getElementById('playlist_table');
+            const newRow = table.insertRow(-1); 
+   
+        
+            rowNumber++;
+        }
+    </script>
+    `
     return result;
 }
 
