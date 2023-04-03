@@ -30,7 +30,7 @@ const addAudioPlayer = (audioFile) => {
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
 		</audio><br/><br/>`
     result += `<button id="audioCancel" onClick="cancelAudio()">Anulowanie audio</button>`;
-    result += `<button id="addAudio" onClick="addRow('Audio')">Add audio</button><br><br>`;
+    result += `<button id="audioAdd" onClick="addRow('Audio')">Add audio</button><br><br>`;
     result += `<script>
     function cancelAudio(){
         const audioPlayer = document.getElementById("audioPlayer");
