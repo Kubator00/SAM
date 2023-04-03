@@ -10,6 +10,7 @@ const addVideoPlayer = (videoFile) => {
 		Twoja przeglądarka nie obsługuje odtwarzacza wideo.
 		</video><br/><br/>`
     result += `<button id="videoCancel" onClick="cancelVideo()">Anulowanie filmu</button><br><br>`;
+    result += `<button id="videoAdd" onClick="">Add video</button><br><br>`;
     result += `
     <script>
     function cancelVideo(){
@@ -28,7 +29,8 @@ const addAudioPlayer = (audioFile) => {
 		<source src="${audioFile}" type="audio/mp3">
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
 		</audio><br/><br/>`
-    result += `<button id="audioCancel" onClick="cancelAudio()">Anulowanie audio</button><br><br>`;
+    result += `<button id="audioCancel" onClick="cancelAudio()">Anulowanie audio</button>`;
+    result += `<button id="addAudio" onClick="">Add audio</button><br><br>`;
     result += `<script>
     function cancelAudio(){
         const audioPlayer = document.getElementById("audioPlayer");
@@ -41,6 +43,7 @@ const addAudioPlayer = (audioFile) => {
 
 const addImage = (imgFile) => {
     let result = `<img src=${imgFile} id="posterImage"/>`;
+    result += `<button id="imgAdd" onClick="">Add image</button><br><br>`;
     return result;
 }
 
