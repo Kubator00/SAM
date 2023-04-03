@@ -65,6 +65,12 @@ app.get('/', (req, res) => {
     <html>
     <head>
     <title>Hello World Player</title>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
     </head>
     <body>
     `)
