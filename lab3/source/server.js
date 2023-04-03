@@ -45,8 +45,8 @@ const addImage = (imgFile) => {
 }
 
 
-const addTable = (imgFile) => {
-    let result = `<table>`;
+const addTable = () => {
+    let result = `<table id='playlist_table'>`;
     result += `<tr><th>No.</th><th>URL</th><th>Type</th></tr>`;
 
 
@@ -76,8 +76,12 @@ app.get('/', (req, res) => {
     if (imgFile)
         res.write(addImage(imgFile))
 
+    res.write(addTable());
+    
     if (!videoFile && !audioFile && !imgFile)
         res.write(`Nie przekazano parametru`)
+
+
 
     res.write(`</body> </html>`);
 	res.end();
