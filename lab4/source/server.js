@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 
     res.write(`<!DOCTYPE HTML> <html> ${addHeadSection()} <body>`);
 
-   
+
 
     if (videoFile)
 
@@ -54,9 +54,9 @@ app.get('/', (req, res) => {
 
 
 
-const addHeadSection = () =>{
+const addHeadSection = () => {
 
-    return(` <head>
+    return (` <head>
 
     <title>Hello World Player</title>
 
@@ -68,7 +68,7 @@ const addHeadSection = () =>{
 
 
 
-const addCss = () =>{
+const addCss = () => {
 
     return `<style>
 
@@ -92,15 +92,13 @@ const addVideoPlayer = (videoFile) => {
 
     result += `
 
-		<video controls id="videoPlayer">
-
-		<source src=${videoFile} type="video/mp4">
+		<video controls id="videoPlayer" src="${videoFile}">
 
 		Twoja przeglądarka nie obsługuje odtwarzacza wideo.
 
 		</video><br/><br/>`
 
-    result += `<button id="videoCancel" onClick="document.getElementById('videoPlayer').children[0].src = 'cancel.mp4'; document.getElementById('videoPlayer').src='cancel.mp4'">Cancel video</button>`;
+    result += `<button id="videoCancel" onClick="document.getElementById('videoPlayer').src='cancel.mp4'">Cancel video</button>`;
 
     result += `<button id="videoAdd" onClick="addRow('Video')">Add video</button><br><br>`;
 
@@ -118,15 +116,13 @@ const addAudioPlayer = (audioFile) => {
 
     result += `
 
-    	<audio controls id="audioPlayer">
-
-		<source src="${audioFile}" type="audio/mp3">
+    	<audio controls id="audioPlayer" src="${audioFile}">
 
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
 
 		</audio><br/><br/>`
 
-    result += `<button id="audioCancel" onClick="document.getElementById('audioPlayer').children[0].src = 'cancel.mp3'; document.getElementById('audioPlayer').src='cancel.mp3';">Cancel audio</button>`;
+    result += `<button id="audioCancel" onClick="document.getElementById('audioPlayer').src='cancel.mp3';">Cancel audio</button>`;
 
     result += `<button id="audioAdd" onClick="addRow('Audio')">Add audio</button><br><br>`;
 
@@ -174,11 +170,11 @@ const addTable = (url, type) => {
 
         if (type == 'Video')
 
-            src = document.getElementById('videoPlayer').getElementsByTagName("source")[0].src;
+            src = document.getElementById('videoPlayer').getAttribute('src');
 
         else if (type == 'Audio')
 
-            src = document.getElementById('audioPlayer').getElementsByTagName("source")[0].src;
+            src = document.getElementById('audioPlayer').getAttribute('src');
 
         else if (type == 'Image')
 
@@ -214,9 +210,10 @@ const addTable = (url, type) => {
             row.parentNode.removeChild(row);
             for (let i = 1; i < table.rows.length; i++) {
                 var rowNumberCell = table.rows[i].cells[0];
-                rowNumberCell.innerText = i-1;
-              }
-              rowNumber = 0;
+                rowNumberCell.innerText = i;
+                rowNumber = i+1;
+            }
+         
           });
         newRowAction.appendChild(newButton);
         
