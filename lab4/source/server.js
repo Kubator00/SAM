@@ -2,46 +2,6 @@ const express = require('express')
 
 const app = express()
 
-app.get('/', (req, res) => {
-    const videoFile = req.query.videoFile;
-    const audioFile = req.query.audioFile;
-    const imgFile = req.query.imgFile;
-
-    res.write(`<!DOCTYPE HTML> <html> ${addHeadSection()} <body>`);
-   
-    if (videoFile)
-        res.write(addVideoPlayer(videoFile));
-    if (audioFile)
-        res.write(addAudioPlayer(audioFile));
-    if (imgFile)
-        res.write(addImage(imgFile))
-
-    res.write(addTable());
-
-    if (!videoFile && !audioFile && !imgFile)
-        res.write(`Nie przekazano parametru`)
-
-    res.write(`</body> </html>`);
-    res.end();
-})
-
-
-const addHeadSection = () =>{
-    return(` <head>
-    <title>Hello World Player</title>
-    ${addCss()}
-    </head>`)
-}
-
-const addCss = () =>{
-    return `<style>
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-      }
-    </style>`
-}
-
 const addVideoPlayer = (videoFile) => {
     let result = '';
     result += `
@@ -49,9 +9,16 @@ const addVideoPlayer = (videoFile) => {
 		<source src=${videoFile} type="video/mp4">
 		Twoja przeglądarka nie obsługuje odtwarzacza wideo.
 		</video><br/><br/>`
-    result += `<button id="videoCancel" onClick="document.getElementById('videoPlayer').children[0].src = 'cancel.mp4'; document.getElementById('videoPlayer').src='cancel.mp4'">Cancel video</button>`;
+    result += `<button id="videoCancel" onClick="cancelVideo()">Anulowanie filmu</button>`;
     result += `<button id="videoAdd" onClick="addRow('Video')">Add video</button><br><br>`;
-
+    result += `
+    <script>
+    function cancelVideo(){
+        const videoPlayer = document.getElementById("videoPlayer");
+        videoPlayer.setAttribute("src", "cancel.mp4");
+    }
+    </script>
+    `
     return result;
 }
 
@@ -59,21 +26,27 @@ const addAudioPlayer = (audioFile) => {
     let result = '';
     result += `
     	<audio controls id="audioPlayer">
-		<source src="${audioFile}" type="audio/mp3">
+		<source src=${audioFile} type="audio/mp3">
 		Twoja przeglądarka nie obsługuje odtwarzacza audio.
 		</audio><br/><br/>`
-    result += `<button id="audioCancel" onClick="document.getElementById('audioPlayer').children[0].src = 'cancel.mp3'; document.getElementById('audioPlayer').src='cancel.mp3';">Cancel audio</button>`;
+    result += `<button id="audioCancel" onClick="cancelAudio()">Anulowanie audio</button>`;
     result += `<button id="audioAdd" onClick="addRow('Audio')">Add audio</button><br><br>`;
+    result += `<script>
+    function cancelAudio(){
+        const audioPlayer = document.getElementById("audioPlayer");
+        audioPlayer.setAttribute("src", "cancel.mp3");
+    }
+    </script>
+    `
     return result;
 }
 
 
 const addImage = (imgFile) => {
-    let result = `<img src=${imgFile} id="posterImage"/><br>`;
+    let result = `<img src=${imgFile} id="posterImage"/>`;
     result += `<button id="imgAdd" onClick="addRow('Image')">Add image</button><br><br>`;
     return result;
 }
-
 
 const addTable = (url, type) => {
     let result = `<table id='playlist_table'>`;
@@ -107,5 +80,43 @@ const addTable = (url, type) => {
     return result;
 }
 
-app.listen(4080)
 
+app.get('/', (req, res) => {
+    const videoFile = req.query.videoFile;
+    const audioFile = req.query.audioFile;
+    const imgFile = req.query.imgFile;
+
+    res.write(`
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+    <title>Hello World Player</title>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+    </head>
+    <body>
+    `)
+
+    if (videoFile)
+        res.write(addVideoPlayer(videoFile));
+    if (audioFile)
+        res.write(addAudioPlayer(audioFile));
+    if (imgFile)
+        res.write(addImage(imgFile))
+
+    res.write(addTable());
+
+    if (!videoFile && !audioFile && !imgFile)
+        res.write(`Nie przekazano parametru`)
+
+
+
+    res.write(`</body> </html>`);
+    res.end();
+})
+
+app.listen(4080)
