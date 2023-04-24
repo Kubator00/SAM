@@ -166,6 +166,7 @@ const addTable = (url, type) => {
 
     let rowNumber = 1;
 
+
     function addRow(type) {
 
         let src;
@@ -205,8 +206,13 @@ const addTable = (url, type) => {
         var newButton = document.createElement('button');
         newButton.classList.add('removeRowButton');
         newButton.textContent = 'Delete';
-
-        newRowAction.appendChild(newButton.cloneNode(true));
+        newButton.addEventListener('click', (event) => {
+            console.log(event);
+            var button = event.target;
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+          });
+        newRowAction.appendChild(newButton);
         
         rowNumber++;
 
