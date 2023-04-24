@@ -167,6 +167,7 @@ const addTable = (url, type) => {
     let rowNumber = 1;
 
 
+
     function addRow(type) {
 
         let src;
@@ -211,6 +212,11 @@ const addTable = (url, type) => {
             var button = event.target;
             var row = button.parentNode.parentNode;
             row.parentNode.removeChild(row);
+            for (let i = 1; i < table.rows.length; i++) {
+                var rowNumberCell = table.rows[i].cells[0];
+                rowNumberCell.innerText = i-1;
+              }
+              rowNumber = 0;
           });
         newRowAction.appendChild(newButton);
         
