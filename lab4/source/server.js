@@ -200,6 +200,9 @@ const addTable = (url, type) => {
 
         newRowType.innerText = type;
 
+        let newRowAction = newRow.insertCell(3);
+
+        newRowAction.innerText = '<button class="removeRowButton">Delete</button>';
     
 
         rowNumber++;
