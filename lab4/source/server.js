@@ -202,9 +202,12 @@ const addTable = (url, type) => {
 
         let newRowAction = newRow.insertCell(3);
 
-        newRowAction.innerText = '<button class="removeRowButton">Delete</button>';
-    
+        var newButton = document.createElement('button');
+        newButton.classList.add('removeRowButton');
+        newButton.textContent = 'Delete';
 
+        newRowAction.appendChild(newButton.cloneNode(true));
+        
         rowNumber++;
 
     }
