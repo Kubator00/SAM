@@ -125,6 +125,23 @@ const addTable = (url, type) => {
                 rowNumber = 1;
         });
         newRowAction.appendChild(newButton);
+
+        let downButton = document.createElement('button');
+        downButton.classList.add('moveRowDownButton');
+        downButton.textContent = 'Down';
+        newRowAction.appendChild(downButton);
+
+        let upButton = document.createElement('button');
+        upButton.classList.add('moveRowUpButton');
+        upButton.textContent = 'Up';
+        newRowAction.appendChild(upButton);
+        upButton.addEventListener('click', (event) => {
+            let button = event.target;
+            let rowToMove = button.parentNode.parentNode;
+            rowToMove.parentNode.removeChild(rowToMove);
+            console.log(rowToMove);
+        });
+
         rowNumber++;
     }
     </script>
