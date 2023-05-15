@@ -126,15 +126,16 @@ const addTable = (url, type) => {
         });
         newRowAction.appendChild(newButton);
 
+        let upButton = document.createElement('button');
+        upButton.classList.add('moveRowUpButton');
+        upButton.textContent = 'Up';
+        newRowAction.appendChild(upButton);
+
         let downButton = document.createElement('button');
         downButton.classList.add('moveRowDownButton');
         downButton.textContent = 'Down';
         newRowAction.appendChild(downButton);
 
-        let upButton = document.createElement('button');
-        upButton.classList.add('moveRowUpButton');
-        upButton.textContent = 'Up';
-        newRowAction.appendChild(upButton);
         upButton.addEventListener('click', (event) => {
             let button = event.target;
             let rowToMove = button.parentNode.parentNode;
@@ -151,6 +152,12 @@ const addTable = (url, type) => {
             for(let i=0; i<rows.length; i++){
                 table.appendChild(rows[i])
             }
+            for (let i = 1; i < table.rows.length; i++) {
+                let rowNumberCell = table.rows[i].cells[0];
+                rowNumberCell.innerText = i;
+                rowNumber = i+1;
+            }
+         
         });
         
         downButton.addEventListener('click', (event) => {
@@ -169,6 +176,12 @@ const addTable = (url, type) => {
             for(let i=0; i<rows.length; i++){
                 table.appendChild(rows[i])
             }
+            for (let i = 1; i < table.rows.length; i++) {
+                let rowNumberCell = table.rows[i].cells[0];
+                rowNumberCell.innerText = i;
+                rowNumber = i+1;
+            }
+         
         });
 
         rowNumber++;
