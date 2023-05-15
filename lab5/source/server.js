@@ -158,13 +158,13 @@ const addTable = (url, type) => {
             let rowToMove = button.parentNode.parentNode;
             let rowIndex = rowToMove.rowIndex;
             let rows = Array.from(table.rows);
-            if (rowIndex >= rows.length) {
+            if (rowIndex >= rows.length-1) {
                 rows.splice(rowIndex,1);
-                rows.push(rowToMove);
+                rows.splice(1, 0, rowToMove);
             } else {
                 while (table.rows.length > 0) 
                     table.deleteRow(0);
-                [rows[rowIndex], rows[rowIndex-1]] = [rows[rowIndex-1], rows[rowIndex]];
+                [rows[rowIndex], rows[rowIndex+1]] = [rows[rowIndex+1], rows[rowIndex]];
             }
             for(let i=0; i<rows.length; i++){
                 table.appendChild(rows[i])
@@ -180,7 +180,7 @@ const addTable = (url, type) => {
 
 }
 
-app.listen(4080);
+app.listen(4080)
 
 
 
