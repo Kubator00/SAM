@@ -138,8 +138,37 @@ const addTable = (url, type) => {
         upButton.addEventListener('click', (event) => {
             let button = event.target;
             let rowToMove = button.parentNode.parentNode;
-            rowToMove.parentNode.removeChild(rowToMove);
-            console.log(rowToMove);
+            let rowIndex = rowToMove.rowIndex;
+            let rows = Array.from(table.rows);
+            if (rowIndex <= 1) {
+                rows.splice(rowIndex,1);
+                rows.push(rowToMove);
+            } else {
+                while (table.rows.length > 0) 
+                    table.deleteRow(0);
+                [rows[rowIndex], rows[rowIndex-1]] = [rows[rowIndex-1], rows[rowIndex]];
+            }
+            for(let i=0; i<rows.length; i++){
+                table.appendChild(rows[i])
+            }
+        });
+        
+        downButton.addEventListener('click', (event) => {
+            let button = event.target;
+            let rowToMove = button.parentNode.parentNode;
+            let rowIndex = rowToMove.rowIndex;
+            let rows = Array.from(table.rows);
+            if (rowIndex >= rows.length) {
+                rows.splice(rowIndex,1);
+                rows.push(rowToMove);
+            } else {
+                while (table.rows.length > 0) 
+                    table.deleteRow(0);
+                [rows[rowIndex], rows[rowIndex-1]] = [rows[rowIndex-1], rows[rowIndex]];
+            }
+            for(let i=0; i<rows.length; i++){
+                table.appendChild(rows[i])
+            }
         });
 
         rowNumber++;
@@ -151,7 +180,7 @@ const addTable = (url, type) => {
 
 }
 
-app.listen(4080)
+app.listen(4080);
 
 
 
