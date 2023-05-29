@@ -58,18 +58,19 @@ const addVideoPlayer = (videoFile) => {
 
     result += `<button id="videoCancel" onClick="document.getElementById('videoPlayer').src='cancel.mp4'">Cancel video</button>`;
     result += `<button id="videoAdd" onClick="addRow('Video')">Add video</button><br><br>`;
-    result += `<button id="videoPlay" onClick="playPauseVideo()">Play video</button><br><br>`;
-    result += `<button id="videoPause" onClick="playPauseVideo()">Pause video</button><br><br>`;
+    result += `<button id="videoPlay" onClick="playVideo()">Play video</button><br><br>`;
+    result += `<button id="videoPause" onClick="pauseVideo()">Pause video</button><br><br>`;
 
     result +=`
     <script>
-    function playPauseVideo() {
+    function playVideo() {
         const videoPlayer = document.getElementById("videoPlayer");
-        if (videoPlayer.paused) {
-            videoPlayer.play();
-        } else {
-            videoPlayer.pause();
-        }
+        videoPlayer.play();
+    }
+
+    function pauseVideo() {
+        const videoPlayer = document.getElementById("videoPlayer");
+        videoPlayer.pause();
     }
     </script>
 `
@@ -88,19 +89,20 @@ const addAudioPlayer = (audioFile) => {
 
     result += `<button id="audioCancel" onClick="document.getElementById('audioPlayer').src='cancel.mp3';">Cancel audio</button>`;
     result += `<button id="audioAdd" onClick="addRow('Audio')">Add audio</button><br><br>`;
-    result += `<button id="audioPlay" onClick="playPauseAudio()">Play audio</button><br><br>`;
-    result += `<button id="audioPause" onClick="playPauseAudio()">Pause audio</button><br><br>`;
+    result += `<button id="audioPlay" onClick="playAudio()">Play audio</button><br><br>`;
+    result += `<button id="audioPause" onClick="pauseAudio()">Pause audio</button><br><br>`;
 
 
     result +=`
     <script>
-        function playPauseAudio() {
+        function playAudio() {
             const audioPlayer = document.getElementById("audioPlayer");
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-            } else {
-                audioPlayer.pause();
-            }
+            audioPlayer.play();
+        }
+
+        function pauseAudio() {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.pause();
         }
         </script>
     `
