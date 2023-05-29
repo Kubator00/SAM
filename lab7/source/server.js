@@ -58,8 +58,8 @@ const addVideoPlayer = (videoFile) => {
 
     result += `<button id="videoCancel" onClick="document.getElementById('videoPlayer').src='cancel.mp4'">Cancel video</button>`;
     result += `<button id="videoAdd" onClick="addRow('Video')">Add video</button><br><br>`;
-    result += `<button id="videoPlay" onClick="playVideo()">Play video</button><br><br>`;
-    result += `<button id="videoPause" onClick="pauseVideo()">Pause video</button><br><br>`;
+    result += `<button id="videoPlay" onClick="playVideo()">Play Video</button><br><br>`;
+    result += `<button id="videoPause" onClick="pauseVideo()">Pause Video</button><br><br>`;
 
     result +=`
     <script>
@@ -89,8 +89,8 @@ const addAudioPlayer = (audioFile) => {
 
     result += `<button id="audioCancel" onClick="document.getElementById('audioPlayer').src='cancel.mp3';">Cancel audio</button>`;
     result += `<button id="audioAdd" onClick="addRow('Audio')">Add audio</button><br><br>`;
-    result += `<button id="audioPlay" onClick="playAudio()">Play audio</button><br><br>`;
-    result += `<button id="audioPause" onClick="pauseAudio()">Pause audio</button><br><br>`;
+    result += `<button id="audioPlay" onClick="playAudio()">Play Audio</button><br><br>`;
+    result += `<button id="audioPause" onClick="pauseAudio()">Pause Audio</button><br><br>`;
 
 
     result +=`
